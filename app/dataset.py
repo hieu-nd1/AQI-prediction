@@ -3,9 +3,6 @@ from pathlib import Path
 from sklearn.impute import KNNImputer
 from sklearn.preprocessing import MinMaxScaler
 
-AQI_DATA_DIRNAME = Path(__file__).resolve().parents[0]/"dataset"/"hanoi-air-quality.csv"
-WEATHER_DATA_DIRNAME = Path(__file__).resolve().parents[0]/"dataset"/"weather.csv"
-
 
 class Dataset(pd.DataFrame):
     def __init__(self, aqi_file, weather_file):
