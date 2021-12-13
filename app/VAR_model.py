@@ -15,15 +15,15 @@ column_names = data.columns
 
 train, valid, test = data.train, data.valid, data.test
 
-_, _, _, _, _, scaled_train, scaled_valid, scaled_test = preprocess_data(train, valid, test)
+_, _, imputed_train, imputed_valid, imputed_test, scaled_train, scaled_valid, _ = preprocess_data(train, valid, test)
 
-scaled_data = pd.concat([scaled_train, scaled_valid, scaled_test])
+imputed_data = pd.DataFrame(np.concatenate([imputed_train, imputed_valid, imputed_test], axis=0), columns=data.columns)
 
-# for name, column in scaled_data.iloc[:, 0:6].iteritems():
+# for name, column in imputed_data.iloc[:, 0:6].iteritems():
 #     adfuller_test(column, name=column.name)
 #     print('\n')
 
-# print(grangers_causation_matrix(scaled_data, weather=column_names[6:], aqi=column_names[:6]))
+# print(grangers_causation_matrix(imputed_data, weather=column_names[6:], aqi=column_names[:6]))
 
 n_in = 1
 n_out = 1
