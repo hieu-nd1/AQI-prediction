@@ -38,8 +38,7 @@ train, valid, test = data.train, data.valid, data.test
 _, scaler, imputed_train, imputed_valid, imputed_test, _, _, scaled_test = preprocess_data(train, valid, test)
 
 # Plot time series after preprocessing
-imputed_data = np.concatenate([imputed_train, imputed_valid, imputed_test], axis=0)
-imputed_data = pd.DataFrame(imputed_data, columns=data.columns)
+imputed_data = pd.DataFrame(np.concatenate([imputed_train, imputed_valid, imputed_test], axis=0), columns=data.columns)
 imputed_test = pd.DataFrame(imputed_test, columns=test.columns, index=test.index)
 
 # plot_series(x=data.index, y=imputed_data.pm25, title='pm25')
